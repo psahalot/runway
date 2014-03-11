@@ -63,6 +63,5 @@ get_header(); ?>
         
 	
 	<?php get_sidebar( 'front' ); ?>
-	<?php // Display featured posts on front page
-            get_template_part('content','frontposts'); ?>
+	
 <?php get_footer(); ?>
