@@ -49,6 +49,9 @@ if ( ! function_exists( 'runway_setup' ) ) {
 
 		// Create an extra image size for the Post featured image
 		add_image_size( 'post_feature_full_width', 792, 300, true );
+                
+                // create extra image size for blog page
+                add_image_size ('post_blog_thumb', 362, 239, true); 
 
 		// This theme uses wp_nav_menu() in one location
 		register_nav_menus( array(
@@ -178,16 +181,6 @@ function runway_mce_css( $mce_css ) {
 }
 add_filter( 'mce_css', 'runway_mce_css' );
 
-// Add specific CSS class by filter
-add_filter('body_class','runway_class_names');
-function runway_class_names($classes) {
-	if(is_front_page()) {
-            $classes[] = 'runway-front-page';
-        }
-        
-	// return the $classes array
-	return $classes;
-}
 
 /**
  * Register widgetized areas
@@ -207,38 +200,9 @@ function runway_widgets_init() {
 			'after_title' => '</h3>'
 		) );
 
+	
 	register_sidebar( array(
-			'name' => esc_html__( 'Blog Sidebar', 'runway' ),
-			'id' => 'sidebar-blog',
-			'description' => esc_html__( 'Appears in the sidebar on the blog and archive pages only', 'runway' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h3 class="widget-title">',
-			'after_title' => '</h3>'
-		) );
-
-	register_sidebar( array(
-			'name' => esc_html__( 'Single Post Sidebar', 'runway' ),
-			'id' => 'sidebar-single',
-			'description' => esc_html__( 'Appears in the sidebar on single posts only', 'runway' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h3 class="widget-title">',
-			'after_title' => '</h3>'
-		) );
-
-	register_sidebar( array(
-			'name' => esc_html__( 'Page Sidebar', 'runway' ),
-			'id' => 'sidebar-page',
-			'description' => esc_html__( 'Appears in the sidebar on pages only', 'runway' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h3 class="widget-title">',
-			'after_title' => '</h3>'
-		) );
-
-	register_sidebar( array(
-			'name' => esc_html__( 'Front Page Banner Widget', 'runway' ),
+			'name' => esc_html__( 'Home Featured', 'runway' ),
 			'id' => 'frontpage-banner',
 			'description' => esc_html__( 'Appears in the banner area on the Front Page', 'runway' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -250,7 +214,7 @@ function runway_widgets_init() {
 	
         
         register_sidebar( array(
-			'name' => esc_html__( 'Home Testimonial One', 'runway' ),
+			'name' => esc_html__( 'Home Left', 'runway' ),
 			'id' => 'home-testimonial1',
 			'description' => esc_html__( 'Appears in the testimonial area on the Front Page', 'runway' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -261,7 +225,7 @@ function runway_widgets_init() {
 
         
         register_sidebar( array(
-			'name' => esc_html__( 'Home Testimonial Two', 'runway' ),
+			'name' => esc_html__( 'Home Right', 'runway' ),
 			'id' => 'home-testimonial2',
 			'description' => esc_html__( 'Appears in the testimonial area on the Front Page', 'runway' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -270,8 +234,8 @@ function runway_widgets_init() {
 			'after_title' => '</h2>'
 		) );
 	register_sidebar( array(
-			'name' => esc_html__( 'Home #1 one', 'runway' ),
-			'id' => 'home-one1',
+			'name' => esc_html__( 'Home One', 'runway' ),
+			'id' => 'home1',
 			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
@@ -280,8 +244,8 @@ function runway_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Home #1 two', 'runway' ),
-			'id' => 'home-one2',
+			'name' => esc_html__( 'Home Two', 'runway' ),
+			'id' => 'home2',
 			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
@@ -290,8 +254,8 @@ function runway_widgets_init() {
 		) );
 		
 		register_sidebar( array(
-			'name' => esc_html__( 'Home #1 three', 'runway' ),
-			'id' => 'home-one3',
+			'name' => esc_html__( 'Home Three', 'runway' ),
+			'id' => 'home3',
 			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
@@ -309,19 +273,9 @@ function runway_widgets_init() {
 			'after_title' => '</h2>'
 		) );
 
-	register_sidebar( array(
-			'name' => esc_html__( 'Home #2 left', 'runway' ),
-			'id' => 'home-two-left',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-
-	register_sidebar( array(
-			'name' => esc_html__( 'Home #2 right', 'runway' ),
-			'id' => 'home-two-right',
+	        register_sidebar( array(
+			'name' => esc_html__( 'Home Bottom', 'runway' ),
+			'id' => 'home-bottom',
 			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
@@ -329,45 +283,7 @@ function runway_widgets_init() {
 			'after_title' => '</h2>'
 		) );
         
-        register_sidebar( array(
-			'name' => esc_html__( 'Home #3 left', 'runway' ),
-			'id' => 'home-three-left',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
         
-        register_sidebar( array(
-			'name' => esc_html__( 'Home #3 right', 'runway' ),
-			'id' => 'home-three-right',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-        
-        register_sidebar( array(
-			'name' => esc_html__( 'Home #4 left', 'runway' ),
-			'id' => 'home-four-left',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-        
-        register_sidebar( array(
-			'name' => esc_html__( 'Home #4 right', 'runway' ),
-			'id' => 'home-four-right',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
 
 	register_sidebar( array(
 			'name' => esc_html__( 'First Footer Widget Area', 'runway' ),
@@ -1064,4 +980,21 @@ function runway_body_classes($classes)
         $slug = strtolower(get_theme_mod( 'runway_color_scheme' ));
         $classes[] = 'runway-'.$slug;
         return $classes;
+}
+
+function custom_excerpt_length( $length ) {
+	if(is_home()) { 	return 20; }
+	else { return 50; }
+}
+add_filter('excerpt_length','custom_excerpt_length');
+
+
+// Add specific CSS class by filter
+add_filter('body_class','runway_class_names');
+function runway_class_names($classes) {
+    if ( is_page_template( 'page-templates/front-page.php' ) && !get_theme_mod( 'runway_front_featured_posts_check' ) ){ 
+            $classes[]= 'no-featured-products'; 
+        }
+	// return the $classes array
+	return $classes;
 }

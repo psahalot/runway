@@ -18,7 +18,7 @@
 				// Count how many Home one sidebars are active so we can work out how many containers we need
 				$homeoneSidebar = 0;
 				for ( $x=1; $x<=3; $x++ ) {
-					if ( is_active_sidebar( 'home-one' . $x ) ) {
+					if ( is_active_sidebar( 'home' . $x ) ) {
 						$homeoneSidebar++;
 					}
 				}
@@ -34,10 +34,10 @@
 
 					// Display the active Home One sidebars
 					for ( $x=1; $x<=3; $x++ ) {
-						if ( is_active_sidebar( 'home-one'. $x ) ) { ?>
+						if ( is_active_sidebar( 'home'. $x ) ) { ?>
 							<div class="col <?php echo $containerClass?>">
 								<div class="widget-area" role="complementary">
-									<?php dynamic_sidebar( 'home-one'. $x ); ?>
+									<?php dynamic_sidebar( 'home'. $x ); ?>
 								</div> <!-- /.widget-area -->
 							</div> <!-- /.col.<?php echo $containerClass?> -->
 						<?php }
@@ -48,53 +48,29 @@
 			?>
                      
                     <div id="home-cta" class="row">
-						<?php if (is_active_sidebar('home-cta')) { ?>
-						<div class="wrap clearfix">
-								 <div class="col grid_12_of_12">
-										   <?php dynamic_sidebar('home-cta'); ?>
-								</div>
-						</div> <!-- /.home-cta .row -->
-						 <?php } ?>
-					</div> <!-- /#home-cta -->
-
+			<?php if (is_active_sidebar('home-cta')) { ?>
+			<div class="wrap clearfix">
+				 <div class="col grid_12_of_12">
+                                	   <?php dynamic_sidebar('home-cta'); ?>
+				</div>
+			</div> <!-- /.wrap -->
+			 <?php } ?>
+		</div> <!-- /#home-cta -->
+                                        
                      
                     <?php // Display featured posts on front page
 							get_template_part('content','frontposts'); ?>
                      
+                    <div id="home-bottom" class="row">
+			<?php if (is_active_sidebar('home-bottom')) { ?>
+			<div class="wrap clearfix">
+                             <div class="col grid_12_of_12">
+				  <?php dynamic_sidebar('home-bottom'); ?>
+                            </div>
+			</div> <!-- /.wrap -->
+                         <?php } ?>
+                    </div> <!-- /#home-bottom -->
                      
-                     <?php 
-                    // check if a any of Home #4 sidebar is active 
-                    if (is_active_sidebar('home-four-left') || is_active_sidebar('home-four-right')) { ?>
-                        <div id="home-four" class="row">
-                             <div class="wrap clearfix">
-                                    <?php 
-                                    // check if both Home #4 sidebars are active then display both sidebars
-                                    if(is_active_sidebar('home-four-left') && is_active_sidebar('home-four-right')) { ?> 
-                                             <div class="col grid_6_of_12">
-                                                    <?php dynamic_sidebar ('home-four-left'); ?>
-                                             </div>
-                                             <div class="col grid_6_of_12">
-                                                    <?php dynamic_sidebar ('home-four-right'); ?>
-                                             </div>
-                                            
-                                    <?php } ?>
-                                    <?php 
-                                    // check if only Home #4 left is active and Home #4 right is NOT active
-                                    if (is_active_sidebar('home-four-left') && !is_active_sidebar('home-four-right')) { ?>
-                                             <div class="col grid_12_of_12">
-                                                    <?php dynamic_sidebar ('home-four-left'); ?>
-                                             </div>
-                                    <?php } ?>
-                                     <?php 
-                                     // check if only Home #4 right  is active and Home #4 left is NOT active
-                                     if (is_active_sidebar('home-four-right') && !is_active_sidebar('home-four-left')) { ?>
-                                             <div class="col grid_12_of_12">
-                                                    <?php dynamic_sidebar ('home-four-right'); ?>
-                                             </div>
-                                    <?php } ?>
-                              </div> <!-- end .wrap -->
-                     </div> <!-- end #home-four -->
-                  <?php } ?>
                      
         <?php } ?>
                                 

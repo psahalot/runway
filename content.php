@@ -7,7 +7,11 @@
  */
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-           
+            <?php if ( is_home() ) { // Only thumbnail on blog and archive pages  ?>
+                 <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( esc_html__( 'Permalink to %s', 'runway' ), the_title_attribute( 'echo=0' ) ) ); ?>">
+			<?php the_post_thumbnail( 'post_blog_thumb' ); ?>
+		</a>
+            <?php } ?>
 		<header class="entry-header">
 			<?php if ( is_single() ) { ?>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
@@ -18,7 +22,7 @@
 				</h1>
 			<?php } // is_single() ?>
 			<?php runway_posted_on(); ?>
-			<?php if ( has_post_thumbnail() && !is_search() ) { ?>
+			<?php if ( has_post_thumbnail() && !is_search() && is_single() || is_archive()) { ?>
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( esc_html__( 'Permalink to %s', 'runway' ), the_title_attribute( 'echo=0' ) ) ); ?>">
 					<?php the_post_thumbnail( 'post_feature_full_width' ); ?>
 				</a>

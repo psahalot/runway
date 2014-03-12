@@ -15,15 +15,15 @@
  */
 
 get_header(); ?>
-<div id="bannercontainer">
+<div id="home-featured-container">
              <?php if (is_active_sidebar('frontpage-banner')) { ?>
-		<div class="banner row">
+		<div class="home-featured row">
                          <div class="col grid_12_of_12">
                                    <?php dynamic_sidebar('frontpage-banner'); ?>
                                 </div>
-		</div> <!-- /.banner.row -->
+		</div> <!-- /.home-featured .row -->
                  <?php } ?>
-	</div> <!-- /#bannercontainer -->
+	</div> <!-- /#home-featured-container -->
             
         <!-- Starting Testimonial Container -->
 			<?php 

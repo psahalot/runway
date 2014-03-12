@@ -71,6 +71,100 @@ $wp_customize->add_section( 'runway_color_scheme_settings', array(
                         __( 'Black', 'locale' ) => 'Black',
 		),
 	) );
+	
+	/** ===============
+	 * Extends CONTROLS class to add textarea
+	 */
+	class runway_customize_textarea_control extends WP_Customize_Control {
+		public $type = 'textarea';
+		public function render_content() { ?>
+	
+		<label>
+			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<textarea rows="5" style="width:98%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+		</label>
+	
+	<?php
+		}
+	}	
+
+        // Displays a list of categories in dropdown
+        class WP_Customize_Dropdown_Categories_Control extends WP_Customize_Control {
+		public $type = 'dropdown-categories';	
+
+			public function render_content() {
+				$dropdown = wp_dropdown_categories( 
+					array( 
+						'name'             => '_customize-dropdown-categories-' . $this->id,
+						'echo'             => 0,
+						'hide_empty'       => false,
+						'show_option_none' => '&mdash; ' . __('Select', 'runway') . ' &mdash;',
+						'hide_if_empty'    => false,
+						'selected'         => $this->value(),
+					 )
+				 );
+
+				$dropdown = str_replace('<select', '<select ' . $this->get_link(), $dropdown );
+
+				printf( 
+					'<label class="customize-control-select"><span class="customize-control-title">%s</span> %s</label>',
+					$this->label,
+					$dropdown
+				 );
+			}
+        }
+        
+        // Add new section for displaying Featured Posts on Front Page
+        $wp_customize->add_section( 'runway_front_page_post_options', array(
+        'title'       	=> __( 'Front Page Featured Posts', 'runway' ),
+                'description' 	=> __( 'Settings for displaying featured posts on Front Page', 'runway' ),
+                'priority'   	=> 60,
+        ) );
+        // enable featured posts on front page?
+        $wp_customize->add_setting( 'runway_front_featured_posts_check', array( 'default' => 0 ) );
+        $wp_customize->add_control( 'runway_front_featured_posts_check', array(
+                'label'		=> __( 'Show featured posts on Front Page', 'runway' ),
+                'section'	=> 'runway_front_page_post_options',
+                'priority'	=> 10,
+                'type'      => 'checkbox',
+        ) );
+        
+        // Front featured posts section headline
+        $wp_customize->add_setting( 'runway_front_featured_posts_title', array( 'default' => __( 'Latest Posts', 'runway') ) );
+        $wp_customize->add_control( 'runway_front_featured_posts_title', array(
+                'label'		=> __( 'Main Title', 'runway' ),
+                'section'	=> 'runway_front_page_post_options',
+                'settings'	=> 'runway_front_featured_posts_title',
+                'priority'	=> 10,
+        ) );
+        
+        // select number of posts for featured posts on front page
+        $wp_customize->add_setting( 'runway_front_featured_posts_count', array( 'default' => 3 ) );		
+        $wp_customize->add_control( 'runway_front_featured_posts_count', array(
+            'label' 	=> __( 'Number of posts to display (multiple of 4)', 'runway' ),
+            'section' 	=> 'runway_front_page_post_options',
+                'settings' 	=> 'runway_front_featured_posts_count',
+                'priority'	=> 20,
+        ) );
+        
+        // select category for featured posts 
+        $wp_customize->add_setting( 'runway_front_featured_posts_cat', array( 'default' => 0 ) );
+        $wp_customize->add_control( new WP_Customize_Dropdown_Categories_Control( $wp_customize, 'runway_front_post_category', array( 
+                'label'    => __('Post Category', 'runway'),
+                'section'  => 'runway_front_page_post_options',
+                'type'     => 'dropdown-categories',
+                'settings' => 'runway_front_featured_posts_cat',
+                'priority' => 20,
+         ) ) );
+        
+        // featured post read more link
+        $wp_customize->add_setting( 'runway_front_featured_link_text', array( 'default' => __( 'Read more', 'runway' ) ) );	
+        $wp_customize->add_control( 'runway_front_featured_link_text', array(
+            'label' 	=> __( 'Posts Read More Link Text', 'runway' ),
+            'section' 	=> 'runway_front_page_post_options',
+                'settings' 	=> 'runway_front_featured_link_text',
+                'priority'	=> 30,
+        ) );
 }
 add_action( 'customize_register', 'runway_customizer', 11 );
 
