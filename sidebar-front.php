@@ -10,7 +10,7 @@
 	
         <?php 
         // check if any of the home sidebars is active
-        if(is_active_sidebar('home-one-left') || is_active_sidebar('home-one-right') || is_active_sidebar('home-two-left') || is_active_sidebar('home-two-right') || is_active_sidebar('home-three-left') || is_active_sidebar('home-three-right')|| is_active_sidebar('home-four-left') || is_active_sidebar('home-four-right')) { ?>
+         if(is_active_sidebar('home1') || is_active_sidebar('home2') || is_active_sidebar('home3') || is_active_sidebar('home-cta') || is_active_sidebar('home-bottom') || get_theme_mod('runway_front_featured_posts_check')) { ?>
         <div id="home-widget-container">
 		
                     <!-- Starting Home One Container -->
@@ -25,7 +25,7 @@
 
 				// If there's one or more one active sidebars, create a row and add them
 				if ( $homeoneSidebar > 0 ) { ?>
-                                <div id="home-one" class="row">
+                                <div id="home-widgets" class="row">
                                     <div class="wrap clearfix">
                                     
 					<?php
@@ -55,11 +55,11 @@
 				</div>
 			</div> <!-- /.wrap -->
 			 <?php } ?>
-		</div> <!-- /#home-cta -->
+                    </div> <!-- /#home-cta -->
                                         
                      
                     <?php // Display featured posts on front page
-							get_template_part('content','frontposts'); ?>
+			get_template_part('content','frontposts'); ?>
                      
                     <div id="home-bottom" class="row">
 			<?php if (is_active_sidebar('home-bottom')) { ?>
@@ -69,11 +69,7 @@
                             </div>
 			</div> <!-- /.wrap -->
                          <?php } ?>
-                    </div> <!-- /#home-bottom -->
-                     
-                     
-        <?php } ?>
-                                
+                    </div> <!-- /#home-bottom -->                     
                      
          </div> <!-- end #home-widget-container -->
-                           
+         <?php } ?>

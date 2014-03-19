@@ -775,18 +775,18 @@ ul
 }
 
 
-#home-one
+#home-widgets
 {
     background-color:#333;
     color:#ccc;
 }
 
-#home-one a
+#home-widgets a
 {
     color:#fff;
 }
 
-#home-one h4
+#home-widgets h4
 {
 	color: #fff;
 	margin: 10px 0;
@@ -794,7 +794,7 @@ ul
 	font-size: 20px;
 }
 
-#home-one .widget-title
+#home-widgets .widget-title
 {
     color:#fff;
     font-size: 32px;
@@ -992,7 +992,7 @@ ul
 
 .blog .entry-header .entry-title a
 {
-    font-size:28px;
+    font-size:24px;
 }
 
 .entry-header h1 a:visited {
@@ -1360,7 +1360,7 @@ article.sticky .featured-post {
 	width: 48%;
 	margin: 0 2% 40px 0;
 	float: left;
-        min-height:580px;
+        min-height:572px;
 }
 
 .blog .entry-header
@@ -2201,7 +2201,7 @@ li span.dots {
 
 /* ! Smart Shop red	*/
 .runway-red #headercontainer,
-.runway-red #home-one,
+.runway-red #home-widgets,
 .runway-red #front-featured-posts,
 .runway-red .site-footer-wrap,
 .runway-red .post-categories a:hover, 
@@ -2209,22 +2209,32 @@ li span.dots {
 .runway-red .menu-toggle:hover,
 .runway-red .btn:hover,
 .runway-red input[type="submit"]:hover,
-.runway-red li a:hover.page-numbers
+.runway-red li a:hover.page-numbers,
+.runway-red li span.current,
+.runway-red .main-navigation ul ul,
+.runway-red .page-links a .page-numbers:hover
 	{
 	background: #f84545;
 	}
 
         
-.runway-red input[type="submit"]:hover,
+.runway-red input[type="submit"]:hover
 {
-    color:#fff;
+        color:#fff;
 }
 
-.runway-red #footercontainer{
-            background:#E92424;
-        }
+.runway-red .main-navigation ul ul a:hover
+{
+        background:#fff;
+}
+
+.runway-red #footercontainer
+{
+        background:#E92424;
+ }
 .runway-red .entry-header .entry-title a:hover,
-.runway-red .recentcomments a:hover
+.runway-red .recentcomments a:hover,
+.runway-red .main-navigation ul ul a:hover
 {
 	color:#f84545;
 }
@@ -2232,14 +2242,14 @@ li span.dots {
 .runway-red .site-footer,
 .runway-red .smallprint
 {
-   color:#ddd; 
+        color:#ddd; 
 }
 
 
 
 /* ! Smart Shop Blue	*/
 .runway-blue #headercontainer,
-.runway-blue #home-one,
+.runway-blue #home-widgets,
 .runway-blue #front-featured-posts,
 .runway-blue .site-footer-wrap,
 .runway-blue .post-categories a:hover, 
@@ -2247,7 +2257,10 @@ li span.dots {
 .runway-blue .menu-toggle:hover,
 .runway-blue .btn:hover,
 .runway-blue input[type="submit"]:hover,
-.runway-blue li a:hover.page-numbers
+.runway-blue li a:hover.page-numbers,
+.runway-blue li span.current,
+.runway-blue .main-navigation ul ul,
+.runway-blue .page-links a .page-numbers:hover
 	{
 	background: #3DBFD9;
 	}
@@ -2258,12 +2271,18 @@ li span.dots {
     color:#fff;
 }
 
+.runway-blue .main-navigation ul ul a:hover
+{
+        background:#fff;
+}
+
 .runway-blue #footercontainer{
             background:#4CABC6;
         }
         
 .runway-blue .entry-header .entry-title a:hover,
-.runway-blue .recentcomments a:hover
+.runway-blue .recentcomments a:hover,
+.runway-blue .main-navigation ul ul a:hover
 {
 	color:#3DBFD9;
 }
@@ -2278,7 +2297,7 @@ li span.dots {
 /* ! Smart Shop Green	*/
 
 .runway-green #headercontainer,
-.runway-green #home-one,
+.runway-green #home-widgets,
 .runway-green #front-featured-posts,
 .runway-green .site-footer-wrap,
 .runway-green .post-categories a:hover, 
@@ -2286,12 +2305,19 @@ li span.dots {
 .runway-green .menu-toggle:hover,
 .runway-green .btn:hover,
 .runway-green input[type="submit"]:hover,
-.runway-green li a:hover.page-numbers
+.runway-green li a:hover.page-numbers,
+.runway-green li span.current,
+.runway-green .main-navigation ul ul,
+.runway-green .page-links a .page-numbers:hover
 	{
 	background: #77DFBA;
 	}
         
-        
+.runway-green .main-navigation ul ul a:hover
+{
+        background:#fff;
+}
+
 .runway-green input[type="submit"]:hover
 {
     color:#fff;
@@ -2302,16 +2328,12 @@ li span.dots {
         }
 	
 .runway-green .entry-header .entry-title a:hover,
-.runway-green .recentcomments a:hover
+.runway-green .recentcomments a:hover,
+.runway-green .main-navigation ul ul a:hover
 {
 	color:#77DFBA;
 }
 
-.runway-green .site-footer,
-.runway-green .smallprint
-{
-   color:#ddd; 
-}
 	
 
 
@@ -2418,7 +2440,7 @@ li span.dots {
            margin:0 20px 20px 0;
         }
         
-        #home-one .col{
+        #home-widgets .col{
             width: 100%;
             margin: 0 auto;
         }
@@ -2426,6 +2448,13 @@ li span.dots {
          #home-widget-container .wrap
         {
             text-align:center;
+        }
+        
+        .site-footer .col
+        {
+            border-bottom:1px solid #eee;
+            margin-bottom:20px;
+            padding-bottom:0;
         }
 }
 
@@ -2481,7 +2510,7 @@ li span.dots {
         }
         
 	.social-media-icons {
-		text-align: center;
+            text-align: center;
 	}
         
         .entry-content #gallery-1 .gallery-item
@@ -2493,6 +2522,11 @@ li span.dots {
 	{
             width:100%;
 	}
+        
+        img.wp-post-image
+        {
+            width:100%;
+        }
          .home-featured-post
         {
            width:100%; 
