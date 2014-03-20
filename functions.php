@@ -103,6 +103,8 @@ require get_template_directory() . '/inc/customizer.php';
 
 add_action( 'after_setup_theme', 'runway_setup' );
 
+/* Include plugin activation file to install plugins */
+include get_template_directory() . '/inc/plugin-activation/plugin-details.php';
 
 /**
  * Returns the Google font stylesheet URL, if available.
@@ -997,4 +999,17 @@ function runway_class_names($classes) {
         }
 	// return the $classes array
 	return $classes;
+}
+
+
+/* register Envira Gallery plugin to receive updateds and addons */
+
+add_action( 'after_setup_theme', 'tgm_envira_define_license_key' );
+function tgm_envira_define_license_key() {
+    
+    // If the key has not already been defined, define it now.
+    if ( ! defined( 'ENVIRA_LICENSE_KEY' ) ) {
+        define( 'ENVIRA_LICENSE_KEY', 'f21b503f7793be583daab680a7f8bda7' );
+    }
+    
 }
