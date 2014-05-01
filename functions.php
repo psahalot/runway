@@ -87,14 +87,6 @@ if ( ! function_exists( 'runway_setup' ) ) {
 				'height' => 80
 			) );
 
-		// Enable support for Theme Options.
-		// Rather than reinvent the wheel, we're using the Options Framework by Devin Price, so huge props to him!
-		// http://wptheming.com/options-framework-theme/
-		if ( !function_exists( 'optionsframework_init' ) ) {
-			define( 'OPTIONS_FRAMEWORK_DIRECTORY', trailingslashit( get_template_directory_uri() ) . 'inc/' );
-			require_once trailingslashit( dirname( __FILE__ ) ) . 'inc/options-framework.php';
-		}
-
 	}
 }
 
@@ -202,93 +194,8 @@ function runway_widgets_init() {
 			'after_title' => '</h3>'
 		) );
 
-	
 	register_sidebar( array(
-			'name' => esc_html__( 'Home Featured', 'runway' ),
-			'id' => 'frontpage-banner',
-			'description' => esc_html__( 'Appears in the banner area on the Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-
-	
-        
-        register_sidebar( array(
-			'name' => esc_html__( 'Home Left', 'runway' ),
-			'id' => 'home-testimonial1',
-			'description' => esc_html__( 'Appears in the testimonial area on the Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-
-        
-        register_sidebar( array(
-			'name' => esc_html__( 'Home Right', 'runway' ),
-			'id' => 'home-testimonial2',
-			'description' => esc_html__( 'Appears in the testimonial area on the Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-	register_sidebar( array(
-			'name' => esc_html__( 'Home One', 'runway' ),
-			'id' => 'home1',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-
-	register_sidebar( array(
-			'name' => esc_html__( 'Home Two', 'runway' ),
-			'id' => 'home2',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-		
-		register_sidebar( array(
-			'name' => esc_html__( 'Home Three', 'runway' ),
-			'id' => 'home3',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-		
-		register_sidebar( array(
-			'name' => esc_html__( 'Home CTA', 'runway' ),
-			'id' => 'home-cta',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-
-	        register_sidebar( array(
-			'name' => esc_html__( 'Home Bottom', 'runway' ),
-			'id' => 'home-bottom',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'runway' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>'
-		) );
-        
-        
-
-	register_sidebar( array(
-			'name' => esc_html__( 'First Footer Widget Area', 'runway' ),
+			'name' => esc_html__( 'Footer #1', 'runway' ),
 			'id' => 'sidebar-footer1',
 			'description' => esc_html__( 'Appears in the footer sidebar', 'runway' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -298,7 +205,7 @@ function runway_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Second Footer Widget Area', 'runway' ),
+			'name' => esc_html__( 'Footer #2', 'runway' ),
 			'id' => 'sidebar-footer2',
 			'description' => esc_html__( 'Appears in the footer sidebar', 'runway' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -308,18 +215,8 @@ function runway_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Third Footer Widget Area', 'runway' ),
+			'name' => esc_html__( 'Footer #3', 'runway' ),
 			'id' => 'sidebar-footer3',
-			'description' => esc_html__( 'Appears in the footer sidebar', 'runway' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h3 class="widget-title">',
-			'after_title' => '</h3>'
-		) );
-
-	register_sidebar( array(
-			'name' => esc_html__( 'Fourth Footer Widget Area', 'runway' ),
-			'id' => 'sidebar-footer4',
 			'description' => esc_html__( 'Appears in the footer sidebar', 'runway' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
@@ -344,19 +241,16 @@ function runway_scripts_styles() {
 	 */
 
 	// Start off with a clean base by using normalise. If you prefer to use a reset stylesheet or something else, simply replace this
-	wp_register_style( 'normalize', trailingslashit( get_template_directory_uri() ) . 'css/normalize.css' , array(), '2.1.3', 'all' );
-	wp_enqueue_style( 'normalize' );
+	wp_enqueue_style( 'normalize', trailingslashit( get_template_directory_uri() ) . 'assets/css/normalize.css' , array(), '2.1.3', 'all' );
 
 	// Register and enqueue our icon font
 	// We're using the awesome Font Awesome icon font. http://fortawesome.github.io/Font-Awesome
-	wp_register_style( 'fontawesome', trailingslashit( get_template_directory_uri() ) . 'css/font-awesome.min.css' , array(), '4.0.3', 'all' );
-	wp_enqueue_style( 'fontawesome' );
+	wp_enqueue_style( 'fontawesome', trailingslashit( get_template_directory_uri() ) . 'assets/css/font-awesome.min.css' , array(), '4.0.3', 'all' );
 
 	// Our styles for setting up the grid.
 	// If you prefer to use a different grid system, simply replace this and perform a find/replace in the php for the relevant styles. I'm nice like that!
-	wp_register_style( 'gridsystem', trailingslashit( get_template_directory_uri() ) . 'css/grid.css' , array(), '1.0.0', 'all' );
-	wp_enqueue_style( 'gridsystem' );
-
+	wp_enqueue_style( 'gridsystem', trailingslashit( get_template_directory_uri() ) . 'assets/css/grid.css' , array(), '1.0.0', 'all' );
+        
 	/*
 	 * Load our Google Fonts.
 	 *
@@ -380,8 +274,8 @@ function runway_scripts_styles() {
 	 */
 
 	// Load Modernizr at the top of the document, which enables HTML5 elements and feature detects
-	wp_register_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . 'js/modernizr-2.7.1-min.js', array(), '2.7.1', false );
-	wp_enqueue_script( 'modernizr' );
+	wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . 'assets/js/modernizr-2.7.1-min.js', array(), '2.7.1', false );
+
 
 	// Adds JavaScript to pages with the comment form to support sites with threaded comments (when in use)
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -392,8 +286,8 @@ function runway_scripts_styles() {
 	// Using the 1.11.0pre version as it fixes an error that causes the email validation to fire immediately when text is entered in the field
 	// You can change the validation error messages below
 	if ( is_singular() && comments_open() ) {
-		wp_register_script( 'validate', trailingslashit( get_template_directory_uri() ) . 'js/jquery.validate.min.1.11.0pre.js', array( 'jquery' ), '1.11.0', true );
-		wp_register_script( 'commentvalidate', trailingslashit( get_template_directory_uri() ) . 'js/comment-form-validation.js', array( 'jquery', 'validate' ), '1.11.0', true );
+		wp_register_script( 'validate', trailingslashit( get_template_directory_uri() ) . 'assets/js/jquery.validate.min.1.11.0pre.js', array( 'jquery' ), '1.11.0', true );
+		wp_register_script( 'commentvalidate', trailingslashit( get_template_directory_uri() ) . 'assets/js/comment-form-validation.js', array( 'jquery', 'validate' ), '1.11.0', true );
 
 		wp_enqueue_script( 'commentvalidate' );
 		wp_localize_script( 'commentvalidate', 'comments_object', array(
@@ -404,9 +298,9 @@ function runway_scripts_styles() {
 		);
 	}
 
-	// Include this script to envoke a button toggle for the main navigation menu on small screens
-	//wp_register_script( 'small-menu', trailingslashit( get_template_directory_uri() ) . 'js/small-menu.js', array( 'jquery' ), '20130130', true );
-	//wp_enqueue_script( 'small-menu' );
+	//Include this script to envoke a button toggle for the main navigation menu on small screens
+	wp_enqueue_script( 'small-menu', trailingslashit( get_template_directory_uri() ) . 'js/small-menu.js', array( 'jquery' ), '20130130', true );
+               
 
 }
 add_action( 'wp_enqueue_scripts', 'runway_scripts_styles' );
