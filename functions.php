@@ -740,53 +740,6 @@ add_filter( 'widget_text', 'do_shortcode' );
 
 
 /**
- * Return an unordered list of linked social media icons, based on the urls provided in the Theme Options
- *
- * @since Runway 1.0
- *
- * @return string Unordered list of linked social media icons
- */
-if ( ! function_exists( 'runway_get_social_media' ) ) {
-	function runway_get_social_media() {
-		$output = '';
-		$icons = array(
-			array( 'url' => of_get_option( 'social_twitter', '' ), 'icon' => 'fa-twitter', 'title' => esc_html__( 'Follow me on Twitter', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_facebook', '' ), 'icon' => 'fa-facebook', 'title' => esc_html__( 'Friend me on Facebook', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_googleplus', '' ), 'icon' => 'fa-google-plus', 'title' => esc_html__( 'Connect with me on Google+', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_linkedin', '' ), 'icon' => 'fa-linkedin', 'title' => esc_html__( 'Connect with me on LinkedIn', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_dribbble', '' ), 'icon' => 'fa-dribbble', 'title' => esc_html__( 'Follow me on Dribbble', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_tumblr', '' ), 'icon' => 'fa-tumblr', 'title' => esc_html__( 'Follow me on Tumblr', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_github', '' ), 'icon' => 'fa-github', 'title' => esc_html__( 'Fork me on GitHub', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_bitbucket', '' ), 'icon' => 'fa-bitbucket', 'title' => esc_html__( 'Fork me on Bitbucket', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_foursquare', '' ), 'icon' => 'fa-foursquare', 'title' => esc_html__( 'Follow me on Foursquare', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_youtube', '' ), 'icon' => 'fa-youtube', 'title' => esc_html__( 'Subscribe to me on YouTube', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_instagram', '' ), 'icon' => 'fa-instagram', 'title' => esc_html__( 'Follow me on Instagram', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_flickr', '' ), 'icon' => 'fa-flickr', 'title' => esc_html__( 'Connect with me on Flickr', 'runway' ) ),
-			array( 'url' => of_get_option( 'social_pinterest', '' ), 'icon' => 'fa-pinterest', 'title' => esc_html__( 'Follow me on Pinterest', 'runway' ) )
-		);
-
-		foreach ( $icons as $key ) {
-			$value = $key['url'];
-			if ( !empty( $value ) ) {
-				$output .= sprintf( '<li><a href="%1$s" title="%2$s"%3$s><span class="fa-stack fa-lg"><i class="fa fa-square fa-stack-2x"></i><i class="fa %4$s fa-stack-1x fa-inverse"></i></span></a></li>',
-					esc_url( $value ),
-					$key['title'],
-					( !of_get_option( 'social_newtab' ) ? '' : ' target="_blank"' ),
-					$key['icon']
-				);
-			}
-		}
-
-		if ( !empty( $output ) ) {
-			$output = '<ul>' . $output . '</ul>';
-		}
-
-		return $output;
-	}
-}
-
-
-/**
  * Return a string containing the footer credits & link
  *
  * @since Runway 1.0
@@ -807,51 +760,6 @@ if ( ! function_exists( 'runway_get_credits' ) ) {
 	}
 }
 
-
-/**
- * Outputs the selected Theme Options inline into the <head>
- *
- * @since Runway 1.0
- *
- * @return void
- */
-function runway_theme_options_styles() {
-	$output = '';
-	$imagepath =  trailingslashit( get_template_directory_uri() ) . 'images/';
-	$background_defaults = array(
-		'color' => '#222222',
-		'image' => $imagepath . 'dark-noise.jpg',
-		'repeat' => 'repeat',
-		'position' => 'top left',
-		'attachment'=>'scroll' );
-
-	$background = of_get_option( 'banner_background', $background_defaults );
-	if ( $background ) {
-		$bkgrnd_color = apply_filters( 'of_sanitize_color', $background['color'] );
-		$output .= "#bannercontainer { ";
-		$output .= "background: " . $bkgrnd_color . " url('" . esc_url( $background['image'] ) . "') " . $background['repeat'] . " " . $background['attachment'] . " " . $background['position'] . ";";
-		$output .= " }";
-	}
-
-	$footerColour = apply_filters( 'of_sanitize_color', of_get_option( 'footer_color', '#222222' ) );
-	if ( !empty( $footerColour ) ) {
-		$output .= "\n#footercontainer { ";
-		$output .= "background-color: " . $footerColour . ";";
-		$output .= " }";
-	}
-
-	if ( of_get_option( 'footer_position', 'center' ) ) {
-		$output .= "\n.smallprint { ";
-		$output .= "text-align: " . sanitize_text_field( of_get_option( 'footer_position', 'center' ) ) . ";";
-		$output .= " }";
-	}
-
-	if ( $output != '' ) {
-		$output = "\n<style>\n" . $output . "\n</style>\n";
-		echo $output;
-	}
-}
-add_action( 'wp_head', 'runway_theme_options_styles' );
 
 
 /**
@@ -885,17 +793,6 @@ function custom_excerpt_length( $length ) {
 add_filter('excerpt_length','custom_excerpt_length');
 
 
-// Add specific CSS class by filter
-add_filter('body_class','runway_class_names');
-function runway_class_names($classes) {
-    if ( is_page_template( 'page-templates/front-page.php' ) && !get_theme_mod( 'runway_front_featured_posts_check' ) ){ 
-            $classes[]= 'no-featured-products'; 
-        }
-	// return the $classes array
-	return $classes;
-}
-
-
 /* register Envira Gallery plugin to receive updateds and addons */
 
 add_action( 'after_setup_theme', 'tgm_envira_define_license_key' );
@@ -908,26 +805,25 @@ function tgm_envira_define_license_key() {
     
 }
 
-if (! function_exists('slug_scripts_masonry') ) :
+if (! function_exists('slug_scripts_masonry') ) {
 
-if ( ! is_admin() ) :
+if ( ! is_admin() ) {
 
 function runway_scripts_masonry() {
 
     wp_enqueue_script('masonry');
 
     wp_enqueue_style('masonry', get_template_directory_uri(). '/css/');
-
 }
 
 add_action('wp_enqueue_scripts', 'runway_scripts_masonry');
 
-endif; //! is_admin()
+} //! is_admin()
 
-endif; //! slug_scripts_masonry exists
+} //! slug_scripts_masonry exists
 
 
-if ( ! function_exists( 'slug_masonry_init' )) :
+if ( ! function_exists( 'slug_masonry_init' )) {
 
 function slug_masonry_exists() { ?>
 
@@ -960,4 +856,4 @@ function slug_masonry_exists() { ?>
 
 add_action( 'wp_footer', 'slug_masonry_init' );
 
-endif; // ! slug_masonry_init exists
+} // ! slug_masonry_init exists
