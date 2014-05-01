@@ -45,12 +45,7 @@
 
 		</footer> <!-- /.site-footer.row -->
                </div> <!-- end .site-footer-wrap -->
-		<?php if ( of_get_option( 'footer_content', runway_get_credits() ) ) {
-			echo '<div class="row smallprint">';
-			echo apply_filters( 'meta_content', wp_kses_post( of_get_option( 'footer_content', runway_get_credits() ) ) );
-			echo '</div> <!-- /.smallprint -->';
-		} ?>
-
+		
 	</div> <!-- /.footercontainer -->
 
 </div> <!-- /.#wrapper.hfeed.site -->

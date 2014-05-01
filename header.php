@@ -13,8 +13,8 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
-
+<!--[if gt IE 8]><!--> 
+<html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -65,9 +65,6 @@
 			</div> <!-- /.col.grid_5_of_12 -->
 
 			<div class="col grid_7_of_12">
-				<div class="social-media-icons">
-					<?php echo runway_get_social_media(); ?>
-				</div>
 				<nav id="site-navigation" class="main-navigation" role="navigation">
 					<h3 class="menu-toggle assistive-text"><?php esc_html_e( 'Menu', 'runway' ); ?></h3>
 					<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'runway' ); ?>"><?php esc_html_e( 'Skip to content', 'runway' ); ?></a></div>

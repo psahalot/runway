@@ -275,6 +275,8 @@ function runway_scripts_styles() {
 
 	// Load Modernizr at the top of the document, which enables HTML5 elements and feature detects
 	wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . 'assets/js/modernizr-2.7.1-min.js', array(), '2.7.1', false );
+        
+        wp_enqueue_script( 'jquery-masonry', array( 'jquery' ) );
 
 
 	// Adds JavaScript to pages with the comment form to support sites with threaded comments (when in use)
@@ -804,56 +806,3 @@ function tgm_envira_define_license_key() {
     }
     
 }
-
-if (! function_exists('slug_scripts_masonry') ) {
-
-if ( ! is_admin() ) {
-
-function runway_scripts_masonry() {
-
-    wp_enqueue_script('masonry');
-
-    wp_enqueue_style('masonry', get_template_directory_uri(). '/css/');
-}
-
-add_action('wp_enqueue_scripts', 'runway_scripts_masonry');
-
-} //! is_admin()
-
-} //! slug_scripts_masonry exists
-
-
-if ( ! function_exists( 'slug_masonry_init' )) {
-
-function slug_masonry_exists() { ?>
-
-<script>
-
-    //set the container that Masonry will be inside of in a var
-
-    var container = document.querySelector('#masonry-loop');
-
-    //create empty var msnry
-    var msnry;
-
-    // initialize Masonry after all images have loaded
-
-    imagesLoaded( container, function() {
-
-        msnry = new Masonry( container, {
-
-            itemSelector: '.masonry-entry'
-
-        });
-
-    });
-
-</script>
-
-<?php }
-
-//add to wp_footer
-
-add_action( 'wp_footer', 'slug_masonry_init' );
-
-} // ! slug_masonry_init exists
