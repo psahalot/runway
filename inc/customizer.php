@@ -28,51 +28,8 @@ add_action( 'customize_preview_init', 'runway_customize_preview_js' );
 
 
 function runway_customizer( $wp_customize ) {
-    $wp_customize->add_section( 'runway_footer', array(
-        'title' => 'Footer', // The title of section
-		'priority'    => 50,
-        'description' => 'Footer Text', // The description of section
-    ) );
- 
-  $wp_customize->add_setting( 'runway_footer_footer_text', array(
-    'default' => 'Hello world',
-    // Let everything else default
-) );
-$wp_customize->add_control( 'runway_footer_footer_text', array(
-    // wptuts_welcome_text is a id of setting that this control handles
-    'label' => 'Footer Text',
-    // 'type' =>, // Default is "text", define the content type of setting rendering.
-    'section' => 'runway_footer', // id of section to which the setting belongs
-    // Let everything else default
-) );
-
-	
-
-
-$wp_customize->add_section( 'runway_color_scheme_settings', array(
-		'title'       => __( 'Color Scheme', 'runway' ),
-		'priority'    => 30,
-		'description' => 'Select your color scheme',
-	) );
-
-	$wp_customize->add_setting( 'runway_color_scheme', array(
-		'default'        => 'black',
-	) );
-
-	$wp_customize->add_control( 'runway_color_scheme', array(
-		'label'   => 'Choose your color scheme',
-		'section' => 'runway_color_scheme_settings',
-		'type'       => 'radio',
-                'default'   => 'black',
-		'choices'    => array(
-			__( 'Blue', 'locale' ) => 'Blue',
-			__( 'Red', 'locale' ) => 'Red',
-			__( 'Green', 'locale' ) => 'Green',
-                        __( 'Black', 'locale' ) => 'Black',
-		),
-	) );
-	
-	/** ===============
+    
+    /** ===============
 	 * Extends CONTROLS class to add textarea
 	 */
 	class runway_customize_textarea_control extends WP_Customize_Control {
@@ -113,61 +70,107 @@ $wp_customize->add_section( 'runway_color_scheme_settings', array(
 				 );
 			}
         }
+    // Add footer text section
+    $wp_customize->add_section('runway_footer', array(
+        'title' => 'Footer Text', // The title of section
+        'priority' => 75,
+    ));
+
+    $wp_customize->add_setting('runway_footer_footer_text', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+        'sanitize_js_callback' => 'runway_sanitize_escaping',
+    ));
+    
+    $wp_customize->add_control(new runway_customize_textarea_control($wp_customize, 'runway_footer_footer_text', array(
+        'section' => 'runway_footer', // id of section to which the setting belongs
+        'settings' => 'runway_footer_footer_text',
+    )));
+	
+
+
+$wp_customize->add_section( 'runway_color_scheme_settings', array(
+		'title'       => __( 'Color Scheme', 'runway' ),
+		'priority'    => 30,
+		'description' => 'Select your color scheme',
+	) );
+
+	$wp_customize->add_setting( 'runway_color_scheme', array(
+		'default'        => 'black',
+	) );
+
+	$wp_customize->add_control( 'runway_color_scheme', array(
+		'label'   => 'Choose your color scheme',
+		'section' => 'runway_color_scheme_settings',
+		'type'       => 'radio',
+                'default'   => 'black',
+		'choices'    => array(
+			__( 'Blue', 'locale' ) => 'Blue',
+			__( 'Red', 'locale' ) => 'Red',
+			__( 'Green', 'locale' ) => 'Green',
+                        __( 'Black', 'locale' ) => 'Black',
+		),
+	) );
+       
         
-        // Add new section for displaying Featured Posts on Front Page
-        $wp_customize->add_section( 'runway_front_page_post_options', array(
-        'title'       	=> __( 'Front Page Featured Posts', 'runway' ),
-                'description' 	=> __( 'Settings for displaying featured posts on Front Page', 'runway' ),
-                'priority'   	=> 60,
-        ) );
-        // enable featured posts on front page?
-        $wp_customize->add_setting( 'runway_front_featured_posts_check', array( 'default' => 0 ) );
-        $wp_customize->add_control( 'runway_front_featured_posts_check', array(
-                'label'		=> __( 'Show featured posts on Front Page', 'runway' ),
-                'section'	=> 'runway_front_page_post_options',
-                'priority'	=> 10,
-                'type'      => 'checkbox',
-        ) );
-        
-        // Front featured posts section headline
-        $wp_customize->add_setting( 'runway_front_featured_posts_title', array( 'default' => __( 'Latest Posts', 'runway') ) );
-        $wp_customize->add_control( 'runway_front_featured_posts_title', array(
-                'label'		=> __( 'Main Title', 'runway' ),
-                'section'	=> 'runway_front_page_post_options',
-                'settings'	=> 'runway_front_featured_posts_title',
-                'priority'	=> 10,
-        ) );
-        
-        // select number of posts for featured posts on front page
-        $wp_customize->add_setting( 'runway_front_featured_posts_count', array( 'default' => 3 ) );		
-        $wp_customize->add_control( 'runway_front_featured_posts_count', array(
-            'label' 	=> __( 'Number of posts to display (multiple of 4)', 'runway' ),
-            'section' 	=> 'runway_front_page_post_options',
-                'settings' 	=> 'runway_front_featured_posts_count',
-                'priority'	=> 20,
-        ) );
-        
-        // select category for featured posts 
-        $wp_customize->add_setting( 'runway_front_featured_posts_cat', array( 'default' => 0 ) );
-        $wp_customize->add_control( new WP_Customize_Dropdown_Categories_Control( $wp_customize, 'runway_front_post_category', array( 
-                'label'    => __('Post Category', 'runway'),
-                'section'  => 'runway_front_page_post_options',
-                'type'     => 'dropdown-categories',
-                'settings' => 'runway_front_featured_posts_cat',
-                'priority' => 20,
-         ) ) );
-        
-        // featured post read more link
-        $wp_customize->add_setting( 'runway_front_featured_link_text', array( 'default' => __( 'Read more', 'runway' ) ) );	
-        $wp_customize->add_control( 'runway_front_featured_link_text', array(
-            'label' 	=> __( 'Posts Read More Link Text', 'runway' ),
-            'section' 	=> 'runway_front_page_post_options',
-                'settings' 	=> 'runway_front_featured_link_text',
-                'priority'	=> 30,
-        ) );
+        // Add custom CSS section 
+    $wp_customize->add_section(
+        'runway_custom_css_section', array(
+        'title' => __('Custom CSS', 'smartshop'),
+        'priority' => 80,
+    ));
+
+    $wp_customize->add_setting(
+        'runway_custom_css', array(
+        'default' => '',
+        'sanitize_callback' => 'runway_sanitize_custom_css',
+        'sanitize_js_callback' => 'runway_sanitize_escaping',
+    ));
+
+    $wp_customize->add_control(
+        new runway_customize_textarea_control(
+        $wp_customize, 'runway_custom_css', array(
+        'label' => __('Add your custom css here and design live! (for advanced users)', 'smartshop'),
+        'section' => 'runway_custom_css_section',
+        'settings' => 'runway_custom_css'
+    )));
+    
+    // Add full screen background option
+   $wp_customize->add_setting( 'background-stretch', array(
+    	'default' 	=> 10,
+    ) );
+    // This will be hooked into the default background_image section
+    $wp_customize->add_control( 'background-stretch', array(
+		'label'    => __( 'Full screen background', 'runway' ),
+		'section'  => 'background_image',
+		'type'     => 'checkbox',
+		'priority' => 10
+        ));
 }
+
 add_action( 'customize_register', 'runway_customizer', 11 );
 
+
+/* 
+ * Sanitize Custom CSS 
+ * 
+ * @since Runway 1.4
+ */
+
+function runway_sanitize_custom_css( $input) {
+    $input = wp_kses_stripslashes( $input);
+    return $input;
+}
+
+/*
+ * Escaping for input values
+ * 
+ * @since Runway 1.4
+ */
+function runway_sanitize_escaping( $input) {
+    $input = esc_attr( $input);
+    return $input;
+}
 
 function generate_css( $selector, $style, $mod_name, $prefix='', $postfix='', $echo=true ) {
       $return = '';
@@ -199,3 +202,4 @@ function header_output() {
   
 // Output custom CSS to live site
 add_action( 'wp_head' , 'header_output');
+

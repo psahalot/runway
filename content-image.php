@@ -6,7 +6,6 @@
  * @since Runway 1.0
  */
 ?>
-<div class="main-content">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php runway_posted_on(); ?>
@@ -36,4 +35,3 @@
 		} ?>
 	</footer> <!-- /.entry-meta -->
 </article> <!-- /#post -->
-  </div> <!-- end .main-content -->

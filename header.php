@@ -66,10 +66,9 @@
 
 			<div class="col grid_7_of_12">
 				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<h3 class="menu-toggle assistive-text"><?php esc_html_e( 'Menu', 'runway' ); ?></h3>
-					<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'runway' ); ?>"><?php esc_html_e( 'Skip to content', 'runway' ); ?></a></div>
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'primary-menu', 'container_class' => 'menu' ) ); ?>
 				</nav> <!-- /.site-navigation.main-navigation -->
+                                <div id="mobile-menu"></div>
 			</div> <!-- /.col.grid_7_of_12 -->
 		</header> <!-- /#masthead.site-header.row -->
 
