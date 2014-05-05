@@ -87,6 +87,7 @@ td { vertical-align: top; }
    ========================================================================== */
 
 body { 
+    background: #efefef; 
     margin: 0 auto;
     padding: 0;
     font: 16px/1.5 'Open Sans', Helvetica, Arial, sans-serif;
