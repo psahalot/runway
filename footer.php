@@ -49,17 +49,15 @@
                <div class="footer-wrap">
         <div class="footer-wrap-content">
             
-             <?php if (get_theme_mod('runway_footer_footer_text') == '') { ?>
-                <div class="row smallprint">
-                    <p>
-                        <a href="<?php $my_theme = wp_get_theme(); echo $my_theme->get( 'ThemeURI' ); ?>">
-                                 <?php _e('Runway WordPress theme by IdeaBox','runway'); ?>
-                         </a>
-                    </p>
-                </div>
-           <?php } ?>
+             <div class="row smallprint left">
+                <p>
+                   <a href="<?php $my_theme = wp_get_theme(); echo $my_theme->get( 'AuthorURI' ); ?>">
+                            <?php _e('Runway WordPress theme by IdeaBox','runway'); ?>
+                    </a>
+                </p>
+            </div>
             <?php if (get_theme_mod('runway_footer_footer_text') != '') { ?>
-                <div class="row smallprint"><?php echo wpautop(get_theme_mod('runway_footer_footer_text')); ?></div>
+                <div class="row smallprint right"><?php echo wpautop(get_theme_mod('runway_footer_footer_text')); ?></div>
            <?php } ?>
         </div>
     </div> <!-- /.footer-wrap -->

@@ -109,6 +109,7 @@ $wp_customize->add_section( 'runway_color_scheme_settings', array(
 			__( 'Red', 'locale' ) => 'Red',
 			__( 'Green', 'locale' ) => 'Green',
                         __( 'Black', 'locale' ) => 'Black',
+                        __( 'Orange', 'locale' ) => 'Orange',
 		),
 	) );
        
