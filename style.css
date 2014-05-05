@@ -2076,7 +2076,7 @@ form label.error {
     clear: both;
     line-height: 2;
     overflow: hidden;
-    margin:0px 35px;
+    margin:0px 35px 0 0;
     position:absolute;
     bottom:0;
 }
@@ -2479,6 +2479,228 @@ li span.dots {
 .runway-orange ::selection
 {
     background:#f05931;
+    color:#fff;
+}
+
+/* ! Smart Shop Brown	*/
+.runway-brown #headercontainer,
+.runway-brown #home-widgets,
+.runway-brown #front-featured-posts,
+.runway-brown .site-footer-wrap,
+.runway-brown .post-categories a:hover, 
+.runway-brown .post-tags a:hover,
+.runway-brown .menu-toggle:hover,
+.runway-brown .btn:hover,
+.runway-brown input[type="submit"]:hover,
+.runway-brown li a:hover.page-numbers,
+.runway-brown li span.current,
+.runway-brown .main-navigation ul ul,
+.runway-brown .page-links a .page-numbers:hover
+{
+    background: #9d785d;
+}
+
+
+.runway-brown input[type="submit"]:hover,
+.runway-brown .main-navigation ul ul a
+{
+    color:#fff;
+}
+
+.runway-brown .main-navigation ul ul a:hover
+{
+    background:#fff;
+}
+
+
+.runway-brown .entry-header .entry-title a:hover,
+.runway-brown .recentcomments a:hover,
+.runway-brown .main-navigation ul ul a:hover,
+.runway-brown .header-meta a:hover,
+.runway-brown .comments-area article header a:hover,
+.runway-brown .sidebar a:hover,
+.runway-brown .gform_wrapper .gfield_required
+
+{
+    color:#9d785d;
+}
+
+.runway-brown .site-footer,
+.runway-brown .smallprint
+{
+    color:#ddd; 
+}
+
+.runway-brown ::selection
+{
+    background:#9d785d;
+    color:#fff;
+}
+
+
+/* ! Smart Shop Pink	*/
+.runway-pink #headercontainer,
+.runway-pink #home-widgets,
+.runway-pink #front-featured-posts,
+.runway-pink .site-footer-wrap,
+.runway-pink .post-categories a:hover, 
+.runway-pink .post-tags a:hover,
+.runway-pink .menu-toggle:hover,
+.runway-pink .btn:hover,
+.runway-pink input[type="submit"]:hover,
+.runway-pink li a:hover.page-numbers,
+.runway-pink li span.current,
+.runway-pink .main-navigation ul ul,
+.runway-pink .page-links a .page-numbers:hover
+{
+    background: #c71c77;
+}
+
+
+.runway-pink input[type="submit"]:hover,
+.runway-pink .main-navigation ul ul a
+{
+    color:#fff;
+}
+
+.runway-pink .main-navigation ul ul a:hover
+{
+    background:#fff;
+}
+
+
+.runway-pink .entry-header .entry-title a:hover,
+.runway-pink .recentcomments a:hover,
+.runway-pink .main-navigation ul ul a:hover,
+.runway-pink .header-meta a:hover,
+.runway-pink .comments-area article header a:hover,
+.runway-pink .sidebar a:hover,
+.runway-pink .gform_wrapper .gfield_required
+
+{
+    color:#c71c77;
+}
+
+.runway-pink .site-footer,
+.runway-pink .smallprint
+{
+    color:#ddd; 
+}
+
+.runway-pink ::selection
+{
+    background:#c71c77;
+    color:#fff;
+}
+
+
+/* ! Smart Shop Golden	*/
+.runway-golden #headercontainer,
+.runway-golden #home-widgets,
+.runway-golden #front-featured-posts,
+.runway-golden .site-footer-wrap,
+.runway-golden .post-categories a:hover, 
+.runway-golden .post-tags a:hover,
+.runway-golden .menu-toggle:hover,
+.runway-golden .btn:hover,
+.runway-golden input[type="submit"]:hover,
+.runway-golden li a:hover.page-numbers,
+.runway-golden li span.current,
+.runway-golden .main-navigation ul ul,
+.runway-golden .page-links a .page-numbers:hover
+{
+    background: #ae9d66;
+}
+
+
+.runway-golden input[type="submit"]:hover,
+.runway-golden .main-navigation ul ul a
+{
+    color:#fff;
+}
+
+.runway-golden .main-navigation ul ul a:hover
+{
+    background:#fff;
+}
+
+
+.runway-golden .entry-header .entry-title a:hover,
+.runway-golden .recentcomments a:hover,
+.runway-golden .main-navigation ul ul a:hover,
+.runway-golden .header-meta a:hover,
+.runway-golden .comments-area article header a:hover,
+.runway-golden .sidebar a:hover,
+.runway-golden .gform_wrapper .gfield_required
+
+{
+    color:#ae9d66;
+}
+
+.runway-golden .site-footer,
+.runway-golden .smallprint
+{
+    color:#ddd; 
+}
+
+.runway-golden ::selection
+{
+    background:#ae9d66;
+    color:#fff;
+}
+
+/* ! Smart Shop Yellow	*/
+.runway-yellow #headercontainer,
+.runway-yellow #home-widgets,
+.runway-yellow #front-featured-posts,
+.runway-yellow .site-footer-wrap,
+.runway-yellow .post-categories a:hover, 
+.runway-yellow .post-tags a:hover,
+.runway-yellow .menu-toggle:hover,
+.runway-yellow .btn:hover,
+.runway-yellow input[type="submit"]:hover,
+.runway-yellow li a:hover.page-numbers,
+.runway-yellow li span.current,
+.runway-yellow .main-navigation ul ul,
+.runway-yellow .page-links a .page-numbers:hover
+{
+    background: #d9ca39;
+}
+
+
+.runway-yellow input[type="submit"]:hover,
+.runway-yellow .main-navigation ul ul a
+{
+    color:#fff;
+}
+
+.runway-yellow .main-navigation ul ul a:hover
+{
+    background:#fff;
+}
+
+
+.runway-yellow .entry-header .entry-title a:hover,
+.runway-yellow .recentcomments a:hover,
+.runway-yellow .main-navigation ul ul a:hover,
+.runway-yellow .header-meta a:hover,
+.runway-yellow .comments-area article header a:hover,
+.runway-yellow .sidebar a:hover,
+.runway-yellow .gform_wrapper .gfield_required
+
+{
+    color:#d9ca39;
+}
+
+.runway-yellow .site-footer,
+.runway-yellow .smallprint
+{
+    color:#ddd; 
+}
+
+.runway-yellow ::selection
+{
+    background:#d9ca39;
     color:#fff;
 }
 

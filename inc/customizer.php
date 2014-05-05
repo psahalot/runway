@@ -110,6 +110,10 @@ $wp_customize->add_section( 'runway_color_scheme_settings', array(
 			__( 'Green', 'locale' ) => 'Green',
                         __( 'Black', 'locale' ) => 'Black',
                         __( 'Orange', 'locale' ) => 'Orange',
+                        __( 'Brown', 'locale' ) => 'Brown',
+                        __( 'Pink', 'locale' ) => 'Pink',
+                        __( 'Golden', 'locale' ) => 'Golden',
+                        __( 'Yellow', 'locale' ) => 'Yellow',
 		),
 	) );
        
