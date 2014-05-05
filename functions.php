@@ -386,16 +386,19 @@ function runway_body_classes($classes) {
         
         if (is_home() || is_archive()) {
             $classes[] = 'runway-masonry';
-            return $classes;
+           
         }
         
-        $slug = strtolower(get_theme_mod( 'runway_color_scheme' ));
-        $classes[] = 'runway-'.$slug;
-        return $classes;
+        if (get_theme_mod( 'runway_color_scheme' )) {
+            $slug = strtolower(get_theme_mod( 'runway_color_scheme' ));
+            $classes[] = 'runway-'.$slug;
+            
+        }
         
         if ( get_theme_mod( 'background-stretch' ) ) {
-		$classes[] = 'full-width-bg';
-                return $classes;
+            $classes[] = 'full-width-bg';
+            
  	}
         
+         return $classes;
 }
