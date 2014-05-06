@@ -224,7 +224,7 @@ p, ol, ul, dl, address {
     margin: 0 0 1.5rem 0;
     font-size: 16px;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.8;
 }
 
 ul ul, ul ol, ol ol, ol ul {
@@ -330,7 +330,7 @@ blockquote.pull-right {
 
 blockquote p {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     margin-bottom: 0;
@@ -353,6 +353,7 @@ blockquote cite {
     line-height: 1.125;
     color: #999;
     display: block;
+    padding-top:10px;
 }
 
 table {
@@ -567,6 +568,7 @@ input[type="submit"]:hover {
     -ms-transition: background-position 0.1s linear;
     -o-transition: background-position 0.1s linear;
     transition: background-position 0.1s linear;
+    transition: all 0.5s ease;
 }
 
 .menu-toggle:focus,
@@ -1293,8 +1295,8 @@ article.sticky .featured-post {
 
 .entry-content li,
 .comment-content li {
-    margin: 0 0 0 28px;
-    margin: 0 0 0 1.75rem;
+    margin: 0 0 8px 28px;
+    margin: 0 0 0.5rem 1.75rem;
 }
 
 /* Author profiles */
@@ -1433,6 +1435,10 @@ article.sticky .featured-post {
 .tag .entry-header
 {
     padding:0 20px;
+}
+
+.archive .entry-header{
+    text-align:center;
 }
 
 .blog .entry-summary,
@@ -1629,7 +1635,7 @@ article.sticky .featured-post {
 
 .comments-area article {
     padding-bottom: 16px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #e7e7e7;
 }
 
 .comments-area article header {
@@ -1721,6 +1727,14 @@ article.sticky .featured-post {
     font-size: 0.75rem;
 }
 
+#comments cite{
+    font-style:normal;
+}
+
+#comments .comment-meta{
+    margin-bottom:10px;
+}
+
 a.comment-reply-link {
     font-size: 14px;
     font-size: 0.875rem;
@@ -1729,8 +1743,13 @@ a.comment-reply-link {
     text-decoration: none;
 }
 
+.comment-reply-title {
+    font-size: 34px;
+    text-transform: uppercase;
+    font-weight:700;
+}
 a.comment-reply-link:hover {
-    color: #21759b;
+    color: #999;
 }
 
 .commentlist .pingback {
@@ -1786,6 +1805,7 @@ a.comment-reply-link:hover {
 #respond form label {
     display: block;
     line-height: 1.8;
+    margin-bottom:5px;
 }
 
 #respond form input[type="text"],
@@ -1822,7 +1842,7 @@ a.comment-reply-link:hover {
 
 label .required,
 span.required {
-    color: #bb0504;
+    color: #333;
 }
 
 form label.error {
@@ -1845,7 +1865,11 @@ form label.error {
 }
 
 .gform_wrapper .gfield_required{
-    color:#333;
+    color:#333 !important;
+}
+
+.gform_wrapper input[type=text]{
+    padding:0.5rem !important;
 }
 
 /* ==========================================================================
@@ -2065,7 +2089,7 @@ form label.error {
 .comment-author img{
     border-radius:100%;
     margin-right:10px;
-    float:left;
+    float:right;
 }
 
 /* ==========================================================================
@@ -2075,7 +2099,6 @@ form label.error {
 .site-content nav {
     clear: both;
     line-height: 2;
-    overflow: hidden;
     margin:0px 35px 0 0;
     position:absolute;
     bottom:0;
@@ -2250,7 +2273,7 @@ li span.dots {
     background: #fff;
 }
 .menu ul ul > li, .widget .children > li, .widget .sub-menu > li {
-    border-bottom: 1px solid #e3e3e3;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .main-navigation ul ul > li:last-child {
@@ -2303,10 +2326,11 @@ li span.dots {
 .runway-red .header-meta a:hover,
 .runway-red .comments-area article header a:hover,
 .runway-red .sidebar a:hover,
-.runway-red .gform_wrapper .gfield_required
+.runway-red .gform_wrapper .gfield_required,
+.runway-red .required
 
 {
-    color:#f84545;
+    color:#f84545 !important;
 }
 
 .runway-red .site-footer,
@@ -2360,9 +2384,10 @@ li span.dots {
 .runway-blue .header-meta a:hover,
 .runway-blue .comments-area article header a:hover,
 .runway-blue .sidebar a:hover,
-.runway-blue .gform_wrapper .gfield_required
+.runway-blue .gform_wrapper .gfield_required,
+.runway-blue .required
 {
-    color:#3DBFD9;
+    color:#3DBFD9 !important;
 }
 
 .runway-blue .site-footer,
@@ -2416,9 +2441,10 @@ li span.dots {
 .runway-green .sidebar a:hover,
 .runway-green .header-meta a:hover,
 .runway-green .comments-area article header a:hover,
-.runway-green .gform_wrapper .gfield_required
+.runway-green .gform_wrapper .gfield_required,
+.runway-green .required
 {
-    color:#77DFBA;
+    color:#77DFBA !important;
 }
 
 .runway-green ::selection
@@ -2464,10 +2490,11 @@ li span.dots {
 .runway-orange .header-meta a:hover,
 .runway-orange .comments-area article header a:hover,
 .runway-orange .sidebar a:hover,
-.runway-orange .gform_wrapper .gfield_required
+.runway-orange .gform_wrapper .gfield_required,
+.runway-orange .required
 
 {
-    color:#f05931;
+    color:#f05931 !important;
 }
 
 .runway-orange .site-footer,
@@ -2519,10 +2546,11 @@ li span.dots {
 .runway-brown .header-meta a:hover,
 .runway-brown .comments-area article header a:hover,
 .runway-brown .sidebar a:hover,
-.runway-brown .gform_wrapper .gfield_required
+.runway-brown .gform_wrapper .gfield_required,
+.runway-brown .required
 
 {
-    color:#9d785d;
+    color:#9d785d !important;
 }
 
 .runway-brown .site-footer,
@@ -2575,10 +2603,11 @@ li span.dots {
 .runway-pink .header-meta a:hover,
 .runway-pink .comments-area article header a:hover,
 .runway-pink .sidebar a:hover,
-.runway-pink .gform_wrapper .gfield_required
+.runway-pink .gform_wrapper .gfield_required,
+.runway-pink .required
 
 {
-    color:#c71c77;
+    color:#c71c77 !important;
 }
 
 .runway-pink .site-footer,
@@ -2631,10 +2660,11 @@ li span.dots {
 .runway-golden .header-meta a:hover,
 .runway-golden .comments-area article header a:hover,
 .runway-golden .sidebar a:hover,
-.runway-golden .gform_wrapper .gfield_required
+.runway-golden .gform_wrapper .gfield_required,
+.runway-golden .required
 
 {
-    color:#ae9d66;
+    color:#ae9d66 !important;
 }
 
 .runway-golden .site-footer,
@@ -2686,10 +2716,11 @@ li span.dots {
 .runway-yellow .header-meta a:hover,
 .runway-yellow .comments-area article header a:hover,
 .runway-yellow .sidebar a:hover,
-.runway-yellow .gform_wrapper .gfield_required
+.runway-yellow .gform_wrapper .gfield_required,
+.runway-yellow .required
 
 {
-    color:#d9ca39;
+    color:#d9ca39 !important;
 }
 
 .runway-yellow .site-footer,
