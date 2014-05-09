@@ -1431,6 +1431,10 @@ article.sticky .featured-post {
 
 }
 
+.blog .entry-header{
+    margin-top:20px;
+}
+
 .blog .entry-header,
 .tag .entry-header
 {
